@@ -1,5 +1,13 @@
 FROM debian:sid
 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        curl jq apt-transport-https dirmngr gnupg ca-certificates xz-utils
+
+RUN curl https://apt.quantum2.xyz/dmoj-apt.key
+
+RUN false
+
 RUN echo deb http://deb.debian.org/debian/ bullseye main > /etc/apt/sources.list.d/bullseye.list && \
     echo deb http://security.debian.org/debian-security/ bullseye-security main >> /etc/apt/sources.list.d/bullseye.list && \
     echo deb http://deb.debian.org/debian/ experimental main > /etc/apt/sources.list.d/experimental.list && \
